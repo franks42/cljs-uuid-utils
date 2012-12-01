@@ -1,6 +1,6 @@
 # cljs-uuid-utils
 
-ClojureScript micro-library with an implementation of a type 4, random UUID generator compatible with RFC-4122 and cljs.core/UUID.
+ClojureScript micro-library with an implementation of a type 4, random UUID generator compatible with RFC-4122 and cljs.core/UUID, a uuid-string conformance validating predicate, and a UUID factory from uuid-string with conformance validation.
 
 ## Installation
 

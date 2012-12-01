@@ -7,12 +7,11 @@
 ;; You must not remove this notice, or any other, from this software.
 
 (ns cljs-uuid-utils
-  "Generator for a type4, random UUID that works with cljs.core/UUID.
-  Interface mimics Java's UUID class' static method:
-  randomUUID() - Static factory to retrieve a type 4 (pseudo randomly generated) UUID."
+  "ClojureScript micro-library with an implementation of a type 4, random UUID generator compatible with RFC-4122 and cljs.core/UUID (make-random-uuid), a uuid-string conformance validating predicate (valid-uuid?), and a UUID factory from uuid-string with conformance validation (make-uuid-from)."
   (:require [goog.string.StringBuffer]))
 
 ;; see https://gist.github.com/4159427 for some background
+
 
 (defn make-random-uuid
   "Returns a new type 4 (pseudo randomly generated) cljs.core/UUID,
@@ -54,13 +53,11 @@
     (when maybe-uuid-str (re-find uuid-regex maybe-uuid-str))))
 
 
-;; define protocol for as-uuid that should extend string/symbol/keyword/UUID to return a UUID or nil if a UUID can be deduced from the input.
-;; 
-
 (defn make-uuid-from
   "Returns a cljs.core/UUID instance or nil for a given string representation.
   Input can be a string or a cljs.core/UUID instance,
   and valid uuid-string conformance is enforced.
+  Note that if the input UUID-instance is not valid, nil is returned.
   (make-uuid-from \"NO-WAY\")  =>  nil
   (make-uuid-from \"4d7332e7-e4c6-4ca5-af91-86336c825e25\")  => #uuid \"4d7332e7-e4c6-4ca5-af91-86336c825e25\"
   (make-uuid-from (UUID. \"4d7332e7-e4c6-4ca5-af91-86336c825e25\"))  => #uuid \"4d7332e7-e4c6-4ca5-af91-86336c825e25\"
