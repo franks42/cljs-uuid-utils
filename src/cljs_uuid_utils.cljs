@@ -60,6 +60,9 @@
     (when maybe-uuid-str (re-find uuid-regex maybe-uuid-str))))
 
 
+;; java equivalent "java.util.UUID/fromString" throws: IllegalArgumentException Invalid UUID string: ffa2a001-9eec-4224-a64d  java.util.UUID.fromString
+;; make-uuid-from should probably throw an exception also instead of silently returning nil...
+
 (defn make-uuid-from
   "(make-uuid-from maybe-uuid maybe-uuid)  =>  uuid-or-nil
   Arguments and Values:
