@@ -14,10 +14,13 @@
 
 
 (defn make-random-uuid
-  "Returns a new type 4 (pseudo randomly generated) cljs.core/UUID,
-  like: xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx
-  as per http://www.ietf.org/rfc/rfc4122.txt.
-  Usage:
+  "(make-random-uuid)  =>  new-uuid
+  Arguments and Values:
+  new-uuid --- new type 4 (pseudo randomly generated) cljs.core/UUID instance.
+  Description:
+  Returns pseudo randomly generated UUID,
+  like: xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx as per http://www.ietf.org/rfc/rfc4122.txt.
+  Examples:
   (make-random-uuid)  =>  #uuid \"305e764d-b451-47ae-a90d-5db782ac1f2e\"
   (type (make-random-uuid)) => cljs.core/UUID"
   []
@@ -35,12 +38,16 @@
 
 
 (defn valid-uuid?
-  "Predicate to test whether the UUID string representation conforms to a
+  "(valid-uuid? maybe-uuid)  =>  truthy-falsy
+  Arguments and Values:
+  maybe-uuid --- string or UUID-instance that may represent a conformant UUID.
+  truthy-falsy --- Returns either the conforming UUID-string (truthy) or nil (falsy).
+  Description:
+  Predicate to test whether a string representation conforms to a
   \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\" format where each x is a hexadecimal character.
   Input can be a maybe-uuid string or a cljs.core/UUID instance.
   Note that the current \"cljs.core/UUID.\" constructor does not check for any conformance.
-  Returns either the conforming UUID-string (truthy) or nil (falsy).
-  Usage:
+  Examples:
   (valid-uuid? \"NO-WAY\")  =>  nil
   (valid-uuid? \"4d7332e7-e4c6-4ca5-af91-86336c825e25\")  => \"4d7332e7-e4c6-4ca5-af91-86336c825e25\"
   (valid-uuid? (UUID. \"4d7332e7-e4c6-4ca5-af91-86336c825e25\"))  => \"4d7332e7-e4c6-4ca5-af91-86336c825e25\"
@@ -54,10 +61,15 @@
 
 
 (defn make-uuid-from
-  "Returns a cljs.core/UUID instance or nil for a given string representation.
-  Input can be a string or a cljs.core/UUID instance,
-  and valid uuid-string conformance is enforced.
+  "(make-uuid-from maybe-uuid maybe-uuid)  =>  uuid-or-nil
+  Arguments and Values:
+  maybe-uuid --- string or UUID-instance that may represent a conformant UUID.
+  uuid-or-nil --- Returns either a cljs.core/UUID instance or nil.
+  Description:
+  Returns a cljs.core/UUID instance for a conformant UUID-string representation, or nil.
+  Input can be a string or a cljs.core/UUID instance.
   Note that if the input UUID-instance is not valid, nil is returned.
+  Examples:
   (make-uuid-from \"NO-WAY\")  =>  nil
   (make-uuid-from \"4d7332e7-e4c6-4ca5-af91-86336c825e25\")  => #uuid \"4d7332e7-e4c6-4ca5-af91-86336c825e25\"
   (make-uuid-from (UUID. \"4d7332e7-e4c6-4ca5-af91-86336c825e25\"))  => #uuid \"4d7332e7-e4c6-4ca5-af91-86336c825e25\"

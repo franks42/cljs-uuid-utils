@@ -1,6 +1,6 @@
 # cljs-uuid-utils
 
-ClojureScript micro-library with an implementation of a type 4, random UUID generator compatible with RFC-4122 and cljs.core/UUID, a uuid-string conformance validating predicate, and a UUID factory from uuid-string with conformance validation.
+ClojureScript micro-library with an implementation of a type 4, random UUID generator compatible with RFC-4122 and cljs.core/UUID (make-random-uuid), a uuid-string conformance validating predicate (valid-uuid?), and a UUID factory from uuid-string with conformance validation (make-uuid-from).
 
 ## Installation
 
@@ -12,17 +12,39 @@ Add the following to your `project.clj` dependencies:
 
 ## Usage
 
+Require cljs-uuid-utils library:
 
 ```clojure
 (ns myapp
-  (:use [cljs-uuid-utils :only [make-random-uuid valid-uuid? make-uuid-from]]))
+  (:require [cljs-uuid-utils]))
+```
 
-(def a-uuid (make-random-uuid))
-;; =>  #uuid "305e764d-b451-47ae-a90d-5db782ac1f2e"
-(type a-uuid)
-;; =>  cljs.core/UUID"
-(valid-uuid? a-uuid) 
-;; => "305e764d-b451-47ae-a90d-5db782ac1f2e" (truthy)
+REPL examples:
+
+```clojure
+
+ClojureScript:cljs.user> (def r (cljs-uuid-utils/make-random-uuid))
+#uuid "ec9b1b11-74b0-48a4-989c-7e939fd37dec"
+ClojureScript:cljs.user> (type r)
+cljs.core/UUID
+
+ClojureScript:cljs.user> (cljs-uuid-utils/valid-uuid? "NO-WAY")
+nil
+ClojureScript:cljs.user> (cljs-uuid-utils/valid-uuid? "ec9b1b11-74b0-48a4-989c-7e939fd37dec")
+"ec9b1b11-74b0-48a4-989c-7e939fd37dec"
+ClojureScript:cljs.user> (cljs-uuid-utils/valid-uuid? r)
+"ec9b1b11-74b0-48a4-989c-7e939fd37dec"
+
+ClojureScript:cljs.user> (cljs-uuid-utils/make-uuid-from "ec9b1b11-74b0-48a4-989c-7e939fd37dec")
+#uuid "ec9b1b11-74b0-48a4-989c-7e939fd37dec"
+ClojureScript:cljs.user> (cljs-uuid-utils/make-uuid-from "NO-WAY")
+nil
+ClojureScript:cljs.user> (cljs-uuid-utils/make-uuid-from r)
+#uuid "ec9b1b11-74b0-48a4-989c-7e939fd37dec"
+ClojureScript:cljs.user> (cljs-uuid-utils/make-uuid-from (UUID. "NO-WAY"))
+nil
+ClojureScript:cljs.user> (cljs-uuid-utils/make-uuid-from (UUID. "ec9b1b11-74b0-48a4-989c-7e939fd37dec"))
+#uuid "ec9b1b11-74b0-48a4-989c-7e939fd37dec"
 ```
 
 
