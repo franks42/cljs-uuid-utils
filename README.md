@@ -28,7 +28,7 @@ ClojureScript:cljs.user> (def r (cljs-uuid-utils/make-random-uuid))
 ClojureScript:cljs.user> (type r)
 cljs.core/UUID
 
-ClojureScript:cljs.user> (uuid-string r)
+ClojureScript:cljs.user> (cljs-uuid-utils/uuid-string r)
 "ec9b1b11-74b0-48a4-989c-7e939fd37dec"
 
 ClojureScript:cljs.user> (cljs-uuid-utils/valid-uuid? "NO-WAY")
