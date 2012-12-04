@@ -7,10 +7,30 @@
 ;; You must not remove this notice, or any other, from this software.
 
 (ns cljs-uuid-utils
-  "ClojureScript micro-library with an implementation of a type 4, random UUID generator compatible with RFC-4122 and cljs.core/UUID (make-random-uuid), a uuid-string conformance validating predicate (valid-uuid?), and a UUID factory from uuid-string with conformance validation (make-uuid-from)."
+  "ClojureScript micro-library with an implementation of a type 4, random UUID generator compatible with RFC-4122 and cljs.core/UUID (make-random-uuid), a getter function to obtain the uuid string representation from a UUID-instance (uuid-string), a uuid-string conformance validating predicate (valid-uuid?), and a UUID factory from uuid-string with conformance validation (make-uuid-from)."
   (:require [goog.string.StringBuffer]))
 
 ;; see https://gist.github.com/4159427 for some background
+
+
+;; Future UUID-implementations may chose a different internal representation of the UUID-instance
+;; The trivial uuid-string function hides those UUID-internals.
+;; Further motivation for uuid-string are related to interop thru json or with existing databases.
+
+(defn uuid-string
+  "(uuid-string a-uuid)  =>  uuid-str
+  Arguments and Values:
+  a-uuid --- a cljs.core/UUID instance.
+  uuid-str --- returns a string representation of the UUID instance
+  Description:
+  Returns the string representation of the UUID instance in the format of,
+  \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\" similarly to java.util.UUID/toString.
+  Note that this is different from cljs.core/UUID's EDN string-format.
+  Examples:
+  (def u (make-random-uuid))  =>  #uuid \"305e764d-b451-47ae-a90d-5db782ac1f2e\"
+  (uuid-string u) => \"305e764d-b451-47ae-a90d-5db782ac1f2e\""
+  [a-uuid]
+  (str (.-uuid a-uuid)))
 
 
 (defn make-random-uuid
@@ -54,7 +74,7 @@
   (valid-uuid? (UUID. \"YES-WAY\"))  => nil"
   [maybe-uuid]
   (let [maybe-uuid-str (cond 
-                         (= (type maybe-uuid) cljs.core/UUID) (.-uuid maybe-uuid)
+                         (= (type maybe-uuid) cljs.core/UUID) (uuid-string maybe-uuid)
                          (string? maybe-uuid) maybe-uuid
                          :true false)]
     (when maybe-uuid-str (re-find uuid-regex maybe-uuid-str))))
