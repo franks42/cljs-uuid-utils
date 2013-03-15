@@ -27,4 +27,6 @@
            java.net.URI))
     (is (= (uri-str (make-uri (make-uuid uuid-str-1)))
            "urn:uuid:81e469ae-0d3b-46c3-a508-5782cdfd9f96"))
+    (is (= (boolean (uuid? "urn:uuid:81e469ae-0d3b-46c3-a508-5782cdfd9f96"))
+           true))
       ))
