@@ -2,8 +2,6 @@
   (:use clojure.test
         clj-uuid-utils))
 
-(println "clj-version:" (clojure-version))
-
 (def uuid-str-1 "81e469ae-0d3b-46c3-a508-5782cdfd9f96")
 (def uuid-uri-str-1 "urn:uuid:81e469ae-0d3b-46c3-a508-5782cdfd9f96")
 (def uuid-edn-str-1 "#uuid \"81e469ae-0d3b-46c3-a508-5782cdfd9f96\"")

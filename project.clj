@@ -12,9 +12,8 @@
   :plugins [[codox "0.6.4"]
             ]
   :profiles {:1.4 {:dependencies [[org.clojure/clojure "1.4.0"]]}
-             :1.5 {:dependencies [[org.clojure/clojure "1.5.1"]]}
              :master {:dependencies [[org.clojure/clojure "1.5.1"]]}
              :dev {:dependencies [[clj-ns-browser "1.3.2-SNAPSHOT"]]}}
-  :aliases  {"all" ["with-profile" "dev,master"]}
+  :aliases  {"all" ["with-profile" "dev:dev,1.4:dev,1.4:dev,master"]}
 ;;   :main clj-uuid-utils
   )
