@@ -7,7 +7,7 @@ ClojureScript micro-library with an implementation of a type 4, random UUID gene
 Add the following to your `project.clj` dependencies:
 
 ```clojure
-[org.clojars.franks42/cljs-uuid-utils "0.1.3"]
+[org.clojars.whodidthis/cljs-uuid-utils "1.0.0"]
 ```
 
 ## Usage

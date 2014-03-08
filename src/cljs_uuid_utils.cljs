@@ -46,14 +46,14 @@
   []
   (letfn [(f [] (.toString (rand-int 16) 16))
           (g [] (.toString  (bit-or 0x8 (bit-and 0x3 (rand-int 15))) 16))]
-    (UUID. (.append (goog.string.StringBuffer.)
-       (f) (f) (f) (f) (f) (f) (f) (f) "-" (f) (f) (f) (f) 
+    (UUID. (.toString (.append (goog.string.StringBuffer.)
+       (f) (f) (f) (f) (f) (f) (f) (f) "-" (f) (f) (f) (f)
        "-4" (f) (f) (f) "-" (g) (f) (f) (f) "-"
-       (f) (f) (f) (f) (f) (f) (f) (f) (f) (f) (f) (f)))))
+       (f) (f) (f) (f) (f) (f) (f) (f) (f) (f) (f) (f))))))
 
 
-(def ^:private uuid-regex 
-  (let [x "[0-9a-fA-F]"] (re-pattern (str 
+(def ^:private uuid-regex
+  (let [x "[0-9a-fA-F]"] (re-pattern (str
     "^" x x x x x x x x "-" x x x x "-" x x x x "-" x x x x "-" x x x x x x x x x x x x "$"))))
 
 
@@ -73,7 +73,7 @@
   (valid-uuid? (UUID. \"4d7332e7-e4c6-4ca5-af91-86336c825e25\"))  => \"4d7332e7-e4c6-4ca5-af91-86336c825e25\"
   (valid-uuid? (UUID. \"YES-WAY\"))  => nil"
   [maybe-uuid]
-  (let [maybe-uuid-str (cond 
+  (let [maybe-uuid-str (cond
                          (= (type maybe-uuid) cljs.core/UUID) (uuid-string maybe-uuid)
                          (string? maybe-uuid) maybe-uuid
                          :true false)]
