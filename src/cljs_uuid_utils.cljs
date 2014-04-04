@@ -8,7 +8,7 @@
 
 (ns cljs-uuid-utils
   "ClojureScript micro-library with an implementation of a type 4, random UUID generator compatible with RFC-4122 and cljs.core/UUID (make-random-uuid), a getter function to obtain the uuid string representation from a UUID-instance (uuid-string), a uuid-string conformance validating predicate (valid-uuid?), and a UUID factory from uuid-string with conformance validation (make-uuid-from)."
-  (:require [goog.string.StringBuffer]))
+  (:require [clojure.string :as string]))
 
 ;; see https://gist.github.com/4159427 for some background
 
@@ -46,10 +46,12 @@
   []
   (letfn [(f [] (.toString (rand-int 16) 16))
           (g [] (.toString  (bit-or 0x8 (bit-and 0x3 (rand-int 15))) 16))]
-    (UUID. (.append (goog.string.StringBuffer.)
-       (f) (f) (f) (f) (f) (f) (f) (f) "-" (f) (f) (f) (f) 
-       "-4" (f) (f) (f) "-" (g) (f) (f) (f) "-"
-       (f) (f) (f) (f) (f) (f) (f) (f) (f) (f) (f) (f)))))
+    (UUID.(string/join (concat 
+                        (repeatedly 8 f) "-"
+                        (repeatedly 4 f) "-4"
+                        (repeatedly 3 f) "-"
+                        (g) (repeatedly 3 f) "-"
+                        (repeatedly 12 f))))))
 
 
 (def ^:private uuid-regex 
