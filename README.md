@@ -1,13 +1,17 @@
 # cljs-uuid-utils
 
-ClojureScript micro-library with an implementation of a type 4, random UUID generator compatible with RFC-4122 and cljs.core/UUID (make-random-uuid), a getter function to obtain the uuid string representation from a UUID-instance (uuid-string), a uuid-string conformance validating predicate (valid-uuid?), and a UUID factory from uuid-string with conformance validation (make-uuid-from).
+ClojureScript micro-library with an implementation of a type 4, random UUID generator 
+compatible with RFC-4122 and cljs.core/UUID (make-random-uuid), 
+a getter function to obtain the uuid string representation from a UUID-instance 
+(uuid-string), a uuid-string conformance validating predicate (valid-uuid?), 
+and a UUID factory from uuid-string with conformance validation (make-uuid-from).
 
 ## Installation
 
 Add the following to your `project.clj` dependencies:
 
 ```clojure
-[org.clojars.franks42/cljs-uuid-utils "0.1.3"]
+[org.clojars.franks42/cljs-uuid-utils "1.0.0-SNAPSHOT"]
 ```
 
 ## Usage
