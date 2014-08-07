@@ -4,7 +4,8 @@ ClojureScript micro-library with an implementation of a type 4, random UUID gene
 compatible with RFC-4122 and cljs.core/UUID (make-random-uuid), 
 a getter function to obtain the uuid string representation from a UUID-instance 
 (uuid-string), a uuid-string conformance validating predicate (valid-uuid?), 
-and a UUID factory from uuid-string with conformance validation (make-uuid-from).
+and a UUID factory from uuid-string with conformance validation (make-uuid-from). 
+An implementation of a squuid (semi-sequential uuid) generator is also included (make-random-squuid).
 
 ## Installation
 
@@ -52,6 +53,12 @@ ClojureScript:cljs.user> (cljs-uuid-utils/make-uuid-from (UUID. "NO-WAY"))
 nil
 ClojureScript:cljs.user> (cljs-uuid-utils/make-uuid-from (UUID. "ec9b1b11-74b0-48a4-989c-7e939fd37dec"))
 #uuid "ec9b1b11-74b0-48a4-989c-7e939fd37dec"
+
+ClojureScript:cljs.user> (cljs-uuid-utils/make-random-squuid)
+#uuid "53c5d080-6b6f-4c58-bf42-cebddef27890"
+ClojureScript:cljs.user> (cljs-uuid-utils/make-random-squuid)
+#uuid "53c5d084-bc2b-47ec-add4-c1d667c8ea11"
+
 ```
 
 
