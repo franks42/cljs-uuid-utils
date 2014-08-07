@@ -64,6 +64,6 @@ ClojureScript:cljs.user> (cljs-uuid-utils/make-random-squuid)
 
 ## License
 
-Copyright (C) 2012 Frank Siebenlist
+Copyright (C) 2012 Frank Siebenlist and Lucas Bradstreet
 
 Distributed under the Eclipse Public License, the same as Clojure.
