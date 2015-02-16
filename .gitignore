@@ -7,3 +7,5 @@ pom.xml
 .lein-failures
 .lein-repl-history
 target/*
+.idea/*
+cljs-uuid-utils.iml

@@ -12,7 +12,7 @@ An implementation of a squuid (semi-sequential uuid) generator is also included 
 Add the following to your `project.clj` dependencies:
 
 ```clojure
-[org.clojars.franks42/cljs-uuid-utils "1.0.0-SNAPSHOT"]
+[org.clojars.franks42/cljs-uuid-utils "1.0.0"]
 ```
 
 ## Usage
