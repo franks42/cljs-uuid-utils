@@ -1,12 +1,12 @@
-# cljs-uuid-utils
 
-START IMPORTANT NOTE
+#START IMPORTANT NOTE
 
 cljs-uuid-utils has changed maintainers and lein coordinates. Please find the new official fork at 
 [https://github.com/lbradstreet/cljs-uuid-utils](https://github.com/lbradstreet/cljs-uuid-utils).
 
-END IMPORTANT NOTE
+#END IMPORTANT NOTE
 
+# cljs-uuid-utils
 
 ClojureScript micro-library with an implementation of a type 4, random UUID generator 
 compatible with RFC-4122 and cljs.core/UUID (make-random-uuid), 
