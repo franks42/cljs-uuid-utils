@@ -1,8 +1,10 @@
 # cljs-uuid-utils
 
 START IMPORTANT NOTE
+
 cljs-uuid-utils has changed maintainers and lein coordinates. Please find the new official fork at 
 [https://github.com/lbradstreet/cljs-uuid-utils](https://github.com/lbradstreet/cljs-uuid-utils).
+
 END IMPORTANT NOTE
 
 
